@@ -84,3 +84,52 @@ def min_max_with_ab_pruning(node, depth, alpha, beta, maximizing_player):
             pruned_nodes.append(node)
 
         return min_eval
+root = Node(0)
+node_b = Node(3)
+node_c = Node(-3)
+node_d = Node(2)
+node_e = Node(1)
+node_f = Node(-2)
+node_g = Node(5)
+node_h = Node(-5)
+
+root.add_child(node_b)
+root.add_child(node_c)
+node_b.add_child(node_d)
+node_b.add_child(node_e)
+node_b.add_child(node_f)
+node_d.add_child(node_g)
+node_d.add_child(node_h)
+
+# Initialize variables
+pruned_nodes = []
+maximizing_player = True
+
+# Run the algorithm with alpha-beta pruning and get the optimal value and path
+optimal_value = min_max_with_ab_pruning(root, 5, float('-inf'), float('inf'), maximizing_player)
+
+# Print the optimal value and path
+print("Optimal value:", optimal_value)
+path = [root]
+current_node = root
+while current_node.children:
+    if maximizing_player:
+        current_node = max(current_node.children, key=lambda x: x.alpha)
+        maximizing_player = False
+    else:
+        current_node = min(current_node.children, key=lambda x: x.beta)
+        maximizing_player = True
+    path.append(current_node)
+
+print("Solution path:")
+for node in path:
+    print(node.value)
+
+# Print the pruned nodes
+if pruned_nodes:
+    print("Pruned nodes:")
+    for node in pruned_nodes:
+        print(node.value)
+else:
+    print("No nodes were pruned.")
+     
