@@ -1,25 +1,15 @@
 #Visualize the n-dimensional data using contour plots.
+#  imports
 import numpy as np
 import matplotlib.pyplot as plt
+x = np.arange(0, 50 ,3)
+y = np.arange(0, 50, 4)
 
-def contour_plot(data, n):
-  # Create a meshgrid of the data.
-  x, y = np.meshgrid(*data.T)
+X, Y = np.meshgrid(x, y)
+Z = np.sin(X/2) +  np.cos(Y/4)
+  
 
-  # Create a contour plot of the data.
-  plt.contour(x, y, data, n)
-
-  # Plot the contour plot.
-  plt.show()
-
-if __name__ == "__main__":
-  # Generate some n-dimensional data.
-  data = np.random.rand(10, 10, 10)
-
-  # Visualize the data using contour plots.
-  for i in range(data.shape[0]):
-    contour_plot(data[i], data.shape[0])
-
+plt.contour(X, Y, Z, cmap='gist_rainbow_r');
 #-------------------------------------------
 
 import heapq
