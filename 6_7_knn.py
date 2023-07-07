@@ -6,12 +6,15 @@ def minkowski(Q, R, p):
     '''
     distance = (np.sum(np.abs(Q - R) ** p) ** (1 / p))
     return distance
+
 import numpy as np
 from collections import Counter
 import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import accuracy_score
 
 class KNearestNeighbors:
-    def _init_(self, k=3, p_metric=2):
+    def __init__(self, k=3, p_metric=2):
         self.k = k
         self.p_metric = p_metric
 
