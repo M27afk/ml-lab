@@ -9,7 +9,7 @@ X, Y = np.meshgrid(x, y)
 Z = np.sin(X/2) +  np.cos(Y/4)
   
 
-plt.contour(X, Y, Z, cmap='gist_rainbow_r');
+plt.contour(X, Y, Z, cmap='viridis');
 #-------------------------------------------
 
 import heapq
