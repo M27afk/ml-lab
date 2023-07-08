@@ -36,32 +36,31 @@ class PCA:
 
 
 # Testing
-if _name_ == "_main_":
-    # Imports
-    import matplotlib.pyplot as plt
-    from sklearn import datasets
 
-    # data = datasets.load_digits()
-    data = datasets.load_iris()
-    X = data.data
-    y = data.target
+import matplotlib.pyplot as plt
+from sklearn import datasets
 
-    # Project the data onto the 2 primary principal components
-    pca = PCA(2)
-    pca.fit(X)
-    X_projected = pca.transform(X)
+# data = datasets.load_digits()
+data = datasets.load_iris()
+X = data.data
+y = data.target
 
-    print("Shape of X:", X.shape)
-    print("Shape of transformed X:", X_projected.shape)
+# Project the data onto the 2 primary principal components
+pca = PCA(2)
+pca.fit(X)
+X_projected = pca.transform(X)
 
-    x1 = X_projected[:, 0]
-    x2 = X_projected[:, 1]
+print("Shape of X:", X.shape)
+print("Shape of transformed X:", X_projected.shape)
 
-    plt.scatter(
-        x1, x2, c=y, edgecolor="none", alpha=0.8, cmap=plt.cm.get_cmap("viridis", 3)
-    )
+x1 = X_projected[:, 0]
+x2 = X_projected[:, 1]
 
-    plt.xlabel("Principal Component 1")
-    plt.ylabel("Principal Component 2")
-    plt.colorbar()
-    plt.show()
+plt.scatter(
+    x1, x2, c=y, edgecolor="none", alpha=0.8, cmap=plt.cm.get_cmap("viridis", 3)
+)
+
+plt.xlabel("Principal Component 1")
+plt.ylabel("Principal Component 2")
+plt.colorbar()
+plt.show()
