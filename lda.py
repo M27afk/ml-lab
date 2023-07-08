@@ -4,7 +4,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.datasets import load_iris
 
 class LDA:
-    def _init_(self, n_components=None):
+    def __init__(self, n_components=None):
         self.n_components = n_components
         self.eig_vectors = None
     
