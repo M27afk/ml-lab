@@ -5,7 +5,9 @@ import seaborn as sns
 np.random.seed(1)
 n = 100
 data = np.random.randn(n, 4)
+#data = test.iloc[:10,3].values (From titanic dataset)
 # create a heat map using Seaborn
+#sns.heatmap(np.asarray([data]))
 sns.heatmap(data)
 plt.show()
 
