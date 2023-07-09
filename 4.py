@@ -1,7 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
-import plotly.graph_objs as go
 
 # create some sample data
 np.random.seed(1)
@@ -13,12 +12,6 @@ for i in range(4):
     plt.subplot(2, 2, i + 1)
     sns.boxplot(data[:, i])
     plt.title('Dimension {}'.format(i + 1))
-
-# create a figure for plotly
-fig = go.Figure()
-for i in range(4):
-    fig.add_trace(go.Box(x=data[:, i]))
-
 # show the figures
 plt.show()
 
