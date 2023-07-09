@@ -13,9 +13,12 @@ for i in range(4):
     sns.boxplot(data[:, i])
     plt.title('Dimension {}'.format(i + 1))
 # show the figures
+
+#data = test.iloc[:,3].values
+#sns.boxplot(np.asarray([data]))
+#plt.xlabel("Age")
+
 plt.show()
-
-
 
 #---------------------------
 
