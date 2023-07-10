@@ -22,23 +22,15 @@ plt.show()
 
 #---------------------------
 
-
-
-class Node:
-    def __init__(self, value):
+class Tree:
+    def __init__(self, value, children=[]):
         self.value = value
-        self.children = []
+        self.children = children
         self.alpha = float('-inf')
         self.beta = float('inf')
 
-    def add_child(self, child_node):
-        self.children.append(child_node)
-
-    def is_leaf(self):
-        return not self.children
-
 def min_max_with_ab_pruning(node, depth, alpha, beta, maximizing_player):
-    if depth == 0 or node.is_leaf():
+    if depth == 0 or not node.children:
         return node.value
 
     if maximizing_player:
@@ -80,22 +72,17 @@ def min_max_with_ab_pruning(node, depth, alpha, beta, maximizing_player):
             pruned_nodes.append(node)
 
         return min_eval
-root = Node(0)
-node_b = Node(3)
-node_c = Node(-3)
-node_d = Node(2)
-node_e = Node(1)
-node_f = Node(-2)
-node_g = Node(5)
-node_h = Node(-5)
-
-root.add_child(node_b)
-root.add_child(node_c)
-node_b.add_child(node_d)
-node_b.add_child(node_e)
-node_b.add_child(node_f)
-node_d.add_child(node_g)
-node_d.add_child(node_h)
+    
+root = Tree(0, [
+    Tree(0, [
+        Tree(3),
+        Tree(12)
+    ]),
+    Tree(0, [
+        Tree(8),
+        Tree(2)
+    ])
+])
 
 # Initialize variables
 pruned_nodes = []
@@ -116,6 +103,7 @@ while current_node.children:
         current_node = min(current_node.children, key=lambda x: x.beta)
         maximizing_player = True
     path.append(current_node)
+    
 
 print("Solution path:")
 for node in path:
