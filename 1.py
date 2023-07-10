@@ -1,16 +1,23 @@
 import numpy as np
 import matplotlib.pyplot as plt
+import pandas as pd
 from mpl_toolkits.mplot3d import Axes3D
 
-data=np.random.rand(86,20)
-data1=np.random.rand(86,20)
-data2=np.random.rand(86,20)
-fig=plt.figure()
-ax=fig.add_subplot(111,projection='3d')
-ax.plot_surface(data2,Z=data,Y=data1,cmap='jet')
+car_data = pd.read_csv("Toyota.csv", index_col=0, na_values=["??", "????"])
+car_data.dropna(axis=0, inplace=True)
+car_data
+plt.figure(figsize=(10, 10))
+ax = plt.axes(projection="3d")
+x = car_data["Age"]
+y = car_data["KM"]
+xx, yy = np.meshgrid(x, y)
+z = np.array(car_data["Price"])
+ax.set_zlabel("Price")
+ax.plot_surface(xx, yy, z.reshape(-1, 1), cmap="Purples")
+plt.title("Toyota surface plot")
+plt.xlabel("Age")
+plt.ylabel("KM")
 plt.show()
-
-
 
 #---------------------------------------------
 
