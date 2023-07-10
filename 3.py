@@ -18,9 +18,6 @@ class Tree:
         self.value = value
         self.children = children
 
-    def __repr__(self):
-        return 'Tree({0},{1})'.format(self.value, self.children)
-
 # Define the game tree using the Tree data structure
 game_tree = Tree(0, [
     Tree(0, [
